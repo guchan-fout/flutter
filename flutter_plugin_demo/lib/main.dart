@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<Null> _getSystemVersion() async {
     String returnData;
     try {
-      final int result = await platform.invokeMethod('dataInteraction');
+      final String result = await platform.invokeMethod('getSystemVersion');
       returnData = 'SystemVersion：$result';
     } on PlatformException catch (e) {
       returnData = 'error：${e.message}';
