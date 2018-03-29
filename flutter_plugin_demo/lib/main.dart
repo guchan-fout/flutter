@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:flutter_tableview/listViewScreen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -58,9 +59,27 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: new Center(
-        child: new Text('${_returnData}'),
-      ),
+
+      body: new Column( mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: <Widget>[
+        new Center(
+          child: new Text('${_returnData}'),
+        ),
+        new ButtonBar(children: <Widget>[
+          new FlatButton(
+            child:new Icon(Icons.pets),
+            onPressed: () {
+              Navigator.push(
+                context,
+                new MaterialPageRoute(builder: (context) => new listViewScreen()),
+              );
+            },
+          ),
+        ]),
+
+      ]),
       floatingActionButton: new FloatingActionButton(
         onPressed: _getSystemVersion,
         tooltip: 'getSystemVersion',
